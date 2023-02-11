@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Keyword Tokenizer for SEO | Token Extraction From Keywords</title>
+    <meta name="description" content="Working on a new SEO article or optimizing a landing page? Use this free token extraction tool to better target your most important keywords.">
+  	<meta name="author" content="Jiří Lacina">
+  </head>
+  <body>
+    <h1>SEO Keyword Tokenizer</h1>
+    <p>This tool extracts single words (tokens) from your keyword list and gives you a table of tokens with their volumes (minus English stopwords). All you need is a list of keywords and their volumes.</p>
+    <p><strong>Why is it useful?</strong> It can help you with on-page optimisation. You will know which specific words are the most important to include in the title, headings, and the rest of the content based on the keyword research.</p>
+    <h2>Enter keywords and volumes</h2>
+    <div id="input-container">
+      <textarea placeholder="Keywords (1 per line)" id="keywords"></textarea>
+      <textarea placeholder="Volumes (1 per line)" id="volumes"></textarea>
+    </div>
+    <p class="counter">You have entered <strong id="keywordsCounter">0</strong> keywords and <strong id="volumesCounter">0</strong> volumes of total volume <span id="volumeSum">0</span>.</p>
+    <div id="buttons-container">
+      <button id="submit">Submit</button>
+      <button id="reset">Reset</button>
+    </div>
+    <h2>View and copy results</h2>
+    <button id="copy">Copy results</button>
+    <div id="results-body">
+      <table id="results">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <script src="script.js"></script>
+    </div>
+    <p id="footer">Author: <a href="https://www.linkedin.com/in/jiri-lacina/">Jiří Lacina</a></br><a href="mailto:lacina@proton.me">lacina@proton.me</a>
+  </body>  
+</html>
