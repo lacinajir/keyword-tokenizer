@@ -93,6 +93,18 @@ th {
   text-align: center;
 }
 
+a {
+  color: #333;
+}
+
+a:hover {
+  color: #000;
+}
+
+a:visited {
+  color: #333;
+}
+
 @media (max-width: 767px) {
   #input-container {
     flex-direction: column;
