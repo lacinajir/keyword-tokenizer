@@ -55,7 +55,15 @@ button {
   margin-bottom: 16px;
 }
 
-#reset, #export-csv {
+#reset {
+  background-color: #fff;
+  color: #333;
+  border: solid;
+  border-color: #01263f;
+  border-radius: 5px;
+}
+
+#export-csv {
   background-color: #fff;
   color: #333;
   border: solid;
