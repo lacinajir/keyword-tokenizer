@@ -55,7 +55,7 @@ button {
   margin-bottom: 16px;
 }
 
-#reset {
+#reset, #export-csv {
   background-color: #fff;
   color: #333;
   border: solid;
