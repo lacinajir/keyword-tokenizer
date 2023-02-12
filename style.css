@@ -26,12 +26,14 @@ p {
 #input-container {
   text-align: center;
   margin: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 textarea {
   width: 45%;
   height: 200px;
-  margin: 0 10px;
+  margin: 10px;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
@@ -55,15 +57,7 @@ button {
   margin-bottom: 16px;
 }
 
-#reset {
-  background-color: #fff;
-  color: #333;
-  border: solid;
-  border-color: #01263f;
-  border-radius: 5px;
-}
-
-#export-csv {
+#reset, #export-csv {
   background-color: #fff;
   color: #333;
   border: solid;
@@ -100,9 +94,12 @@ th {
 }
 
 @media (max-width: 767px) {
-  #input-container textarea {
-    width: 80%;
-    margin: 20px auto;
+  #input-container {
+    flex-direction: column;
+  }
+  textarea {
+    width: 100%;
+    margin: 20px 0;
   }
   p {
     width: 100%;
