@@ -7,6 +7,7 @@ const resultsBody = resultsTable.getElementsByTagName('tbody')[0];
 const copyButton = document.getElementById('copy');
 const volumeCounter = document.getElementById('volumesCounter');
 const keywordCounter = document.getElementById('keywordsCounter');
+const exportCsvButton = document.getElementById('export-csv');
 
 const stopwords = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'were', 'will', 'with'];
 
@@ -87,7 +88,6 @@ submitButton.addEventListener('click', () => {
     const volume = parseInt(volumes[i].replace(/\D/g, ''));
    
     if (isNaN(volume)) {
-        alert('Volume must be a number.');
         return;
       }
 
@@ -133,7 +133,7 @@ copyButton.addEventListener('click', () => {
       for (const cell of row.cells) {
         rowContent += cell.textContent + '\t';
       }
-      tableContent += rowContent + '\n';
+      tableContent += rowContent.slice(0, -1) + '\n';
     }
   
     const tempInput = document.createElement('textarea');
@@ -144,5 +144,24 @@ copyButton.addEventListener('click', () => {
     document.body.removeChild(tempInput);
   });
   
+  exportCsvButton.addEventListener('click', () => {
+    let tableContent = '';
   
+    for (const row of resultsTable.rows) {
+      let rowContent = '';
+      for (const cell of row.cells) {
+        rowContent += cell.textContent + ',';
+      }
+      tableContent += rowContent.slice(0, -1) + '\n';
+    }
   
+    const blob = new Blob([tableContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'token_table.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
