@@ -6,11 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Keyword Tokenizer for SEO | Extract Tokens From Keywords</title>
     <meta name="description" content="Working on a new SEO article or optimizing a landing page? Use this free token extraction tool to better target your most important keywords.">
-    <meta name="author" content="Jiří Lacina">
-    <meta property="og:image" content="https://lacinajir.github.io/keyword-tokenizer/featured.jpg" />
-    <!-- Pixel Code for https://app.tinyanalytics.io/ -->
-    <script defer src="https://app.tinyanalytics.io/pixel/XnNmKoBusFT4C2KV"></script>
-    <!-- END Pixel Code -->
+  	<meta name="author" content="Jiří Lacina">
   </head>
   <body>
     <h1>SEO Keyword Tokenizer</h1>
@@ -22,14 +18,14 @@
       <textarea placeholder="Volumes (1 per line)" id="volumes"></textarea>
     </div>
     <p class="counter">You have entered <strong id="keywordsCounter">0</strong> keywords and <strong id="volumesCounter">0</strong> volumes of total volume <span id="volumeSum">0</span>.</p>
-    <div id="buttons-container">
+    <div>
       <button id="submit">Generate tokens</button>
       <button id="reset">Reset</button>
     </div>
-    <h2>View all tokens</h2>
-    <div id="buttons-container">
-      <button id="copy">Copy table</button>
-      <button id="export-csv">Export to CSV</button>
+    <h2>See all tokens and their volumes below</h2>
+    <div id="hiddenDiv">
+      <button class="exportBtn" id="copy">Copy table</button>
+      <button class="exportBtn" id="export-csv">Export to CSV</button>
     </div>
     <div id="results-body">
       <table id="results">
