@@ -2,19 +2,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   width: 80%;
   padding-top: 10px;
   margin: 10px auto;
+  color: #212427;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  font-weight: normal;
 }
 
 h2 {
   text-align: center;
+  font-weight: normal;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 1.5rem;
 }
 
 p {
@@ -30,6 +37,8 @@ p {
   margin: auto;
   display: flex;
   flex-direction: row;
+  width: 60%;
+  max-width: 700px;
 }
 
 textarea {
@@ -41,10 +50,12 @@ textarea {
   border-radius: 5px;
   border: 1px solid #ccc;
   resize: none;
+  font-family: Verdana, Helvetica, sans-serif;
 }
 
 button {
   padding: 12px 24px;
+  margin: 16px 0px;
   background-color: #01263f;
   color: #fff;
   border: solid;
@@ -54,12 +65,12 @@ button {
   cursor: pointer;
 }
 
-#buttons-container button {
-  margin-top: 20px;
-  margin-bottom: 16px;
+#submit:hover {
+  background-color: #1a3b52;
+  border-color: #1a3b52;
 }
 
-#reset, #export-csv {
+#reset {
   background-color: #fff;
   color: #333;
   border: solid;
@@ -67,10 +78,21 @@ button {
   border-radius: 5px;
 }
 
+#reset:hover {
+  border-color: #1a3b52;
+}
+
+.exportBtn  {
+  background-color: green;
+  border-color: green;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 40%;
+  table-layout: fixed;
 }
 
 th, td {
@@ -82,6 +104,7 @@ th, td {
 th {
   background-color: #333;
   color: #fff;
+  text-align: center;
 }
 
 .counter {
@@ -107,9 +130,16 @@ a:visited {
   color: #333;
 }
 
+#hiddenDiv {
+  display: none;
+}
+
 @media (max-width: 767px) {
   #input-container {
     flex-direction: column;
+  }
+  #input-container {
+    width: 90%;
   }
   textarea {
     width: 100%;
@@ -120,5 +150,9 @@ a:visited {
   }
   #copy {
     margin-top: 20px;
+  }
+  table {
+    width: 90%;
+    table-layout: fixed;
   }
 }
