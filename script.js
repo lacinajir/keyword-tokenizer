@@ -113,6 +113,7 @@ submitButton.addEventListener('click', () => {
     volumeCell.textContent = tokensMap[token];
     row.appendChild(volumeCell);
     resultsBody.appendChild(row);
+    document.getElementById('hiddenDiv').style.display = "block";
   }
 });
 
@@ -122,6 +123,8 @@ resetButton.addEventListener('click', () => {
     resultsBody.innerHTML = '';
     volumesCounter.textContent = 0;
     keywordsCounter.textContent = 0;
+    volumeSum.textContent = 0;
+    document.getElementById('hiddenDiv').style.display = "none";
   });
   
 
