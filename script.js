@@ -164,6 +164,7 @@ resetButton.addEventListener('click', () => {
     keywordsCounter.textContent = 0;
     volumeSum.textContent = 0;
     document.getElementById('hiddenDiv').style.display = "none";
+    document.getElementById('hiddenPara').style.display = "none";
   });
   
 
