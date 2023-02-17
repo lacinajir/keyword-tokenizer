@@ -21,7 +21,11 @@ h2 {
   text-align: center;
   font-weight: normal;
   font-family: Verdana, Helvetica, sans-serif;
-  font-size: 1.5rem;
+}
+
+h3 {
+  font-weight: bold;
+  font-family: Verdana, Helvetica, sans-serif;
 }
 
 p {
@@ -30,6 +34,12 @@ p {
   margin-bottom: 5px;
   text-align: center;
   max-width: 700px;
+}
+
+#hiddenPara {
+  display: none;
+  color: green;
+  margin-top: -5px;
 }
 
 #input-container {
@@ -132,6 +142,19 @@ a:visited {
 
 #hiddenDiv {
   display: none;
+}
+
+.FAQ {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+h3.FAQ {
+  margin-bottom: 0px;
+}
+
+p.FAQ {
+  width: 100%;
 }
 
 @media (max-width: 767px) {
