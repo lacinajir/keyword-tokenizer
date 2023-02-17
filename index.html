@@ -11,7 +11,7 @@
     <script defer src="https://app.tinyanalytics.io/pixel/XnNmKoBusFT4C2KV"></script>
     <!-- END Pixel Code -->
   </head>
-    <body>
+  <body>
     <h1>SEO Keyword Tokenizer</h1>
     <p>This tool extracts single words (tokens) from your keyword list and gives you a table of tokens with their volumes (minus English stopwords). All you need is a list of keywords and their volumes.</p>
     <h2>Enter keywords and volumes</h2>
@@ -34,8 +34,8 @@
       <table id="results">
         <thead>
           <tr>
-            <th>Token</th>
-            <th>Volume</th>
+            <th onclick="sortTable(0)">Token</th>
+            <th onclick="sortTable(1)">Volume</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -44,13 +44,41 @@
     </div>
     <div>
       <h2>Frequently asked questions</h2>
-      <h3 class="FAQ">How is this tool useful?</h3>
+      <h3 class="FAQ">How is Keyword Tokenizer useful?</h3>
       <p class="FAQ">This tool can help you with on-page optimization. You will know which specific words are the most important to include in the title, headings, and the rest of the content based on the keyword research.</p>
       <h3 class="FAQ">Where can I get volumes of my keywords?</h3>
       <p class="FAQ">Popular keyword research tools such as Ahrefs, Semrush or Marketing Miner can help you identify relevant keywords and their average monthly search volume in a chosen country (or globally). Alternatively, you can use Google Search Console, which shows impressions of your queries.</p>
       <h3 class="FAQ">Can I find out how often individual words appear in the data set?</h3>
-      <p class="FAQ">This tool does not currently support this feature, although it may be implemented in the future. In the meantime, you can use <a href="https://www.prokopsw.cz/app/n-grams/">this N-grams tool</a>.</p>
+      <p class="FAQ">Keyword Tokenizer does not currently support this feature, although it may be implemented in the future. In the meantime, you can use an <a href="https://www.prokopsw.cz/app/n-grams/" target="_blank">N-grams tool</a>.</p>
     </div>
     <p id="footer">Author: <a target="_blank" href="https://www.linkedin.com/in/jiri-lacina/">Jiří Lacina</a>, 2023</br><a href="mailto:lacina@proton.me">lacina@proton.me</a>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+          "@type": "Question",
+          "name": "How is Keyword Tokenizer useful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This tool can help you with on-page optimization. You will know which specific words are the most important to include in the title, headings, and the rest of the content based on the keyword research."
+          }
+        },{
+          "@type": "Question",
+          "name": "Where can I get volumes of my keywords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular keyword research tools such as Ahrefs, Semrush or Marketing Miner can help you identify relevant keywords and their average monthly search volume in a chosen country (or globally). Alternatively, you can use Google Search Console, which shows impressions of your queries."
+          }
+        },{
+          "@type": "Question",
+          "name": "Can I find out how often individual words appear in the data set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keyword Tokenizer does not currently support this feature, although it may be implemented in the future. In the meantime, you can use an N-grams tool."
+          }
+        }]
+      }
+    </script>
   </body>  
 </html>
