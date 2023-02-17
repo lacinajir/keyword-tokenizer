@@ -165,6 +165,7 @@ resetButton.addEventListener('click', () => {
     volumeSum.textContent = 0;
     document.getElementById('hiddenDiv').style.display = "none";
     document.getElementById('hiddenPara').style.display = "none";
+    copyButton.textContent = 'Copy table';
   });
   
 
@@ -185,6 +186,7 @@ copyButton.addEventListener('click', () => {
     tempInput.select();
     document.execCommand('copy');
     document.body.removeChild(tempInput);
+    copyButton.textContent = 'Copied!';
   });
   
   exportCsvButton.addEventListener('click', () => {
