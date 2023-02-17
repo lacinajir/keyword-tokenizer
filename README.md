@@ -7,7 +7,7 @@ It can help you with on-page optimization. You will know which specific words ar
 ## Who is it for?
 Mainly SEO specialists and copywriters who create content for the web.
 
-## Features
+## Features
 * Generates a list of tokens and their volumes
 * Shows how many keywords and volumes have been entered in the input fields
 * Quick reset button
