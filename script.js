@@ -114,6 +114,8 @@ submitButton.addEventListener('click', () => {
     row.appendChild(volumeCell);
     resultsBody.appendChild(row);
     document.getElementById('hiddenDiv').style.display = "block";
+    document.getElementById('hiddenPara').style.display = "block";
+
   }
 });
 
