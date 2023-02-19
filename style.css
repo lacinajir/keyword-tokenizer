@@ -93,8 +93,9 @@ button {
 }
 
 .exportBtn  {
-  background-color: green;
-  border-color: green;
+  color: #212427;
+  background-color: #BCD7C5;
+  border-color: #BCD7C5;
 }
 
 table {
