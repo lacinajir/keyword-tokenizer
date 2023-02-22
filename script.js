@@ -110,11 +110,13 @@ submitButton.addEventListener('click', () => {
 
   if (!keywords || !keywords[0] || !volumes || !volumes[0]) {
     alert('Enter keywords and volumes.');
+    document.getElementById('hiddenPara').style.display = "none";
     return;
   }
   
   if (keywords.length !== volumes.length) {
     alert('Number of keywords and number of volumes do not match.');
+    document.getElementById('hiddenPara').style.display = "none";
     return;
   }
 
