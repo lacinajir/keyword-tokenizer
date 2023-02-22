@@ -62,6 +62,7 @@ textarea {
   resize: none;
   font-family: Verdana, Helvetica, sans-serif;
   color: #212427;
+  outline: none;
 }
 
 button {
