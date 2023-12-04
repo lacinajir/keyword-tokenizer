@@ -11,43 +11,30 @@ const exportCsvButton = document.getElementById('export-csv');
 
 const stopwords = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'were', 'will', 'with'];
 
-keywordsInput.addEventListener('input', function () {
-    let keywordCounter = this.value.split('\n').length;
-    if (keywordCounter === 1 && this.value === '') {
-      keywordCounter = 0;
+function updateCountsAndTotal() {
+  let keywordValues = keywordsInput.value.split('\n').filter(val => val !== '');
+  let volumeValues = volumesInput.value.split('\n').filter(val => val !== '');
+
+  let keywordCounter = keywordValues.length;
+  keywordsCounter.textContent = `${keywordCounter}`;
+
+  let volumeCounter = volumeValues.length;
+  volumesCounter.textContent = `${volumeCounter}`;
+
+  let totalVolume = 0;
+  for (let i = 0; i < keywordValues.length; i++) {
+    if (volumeValues[i]) {
+      totalVolume += parseInt(volumeValues[i], 10);
     }
-    keywordsCounter.textContent = `${keywordCounter}`;
+  }
 
-    let keywordValues = this.value.split('\n').filter(val => val !== '');
-    let volumeValues = volumesInput.value.split('\n').filter(val => val !== '');
+  // Format the total volume with commas
+  let formattedTotalVolume = totalVolume.toLocaleString();
+  volumeSum.textContent = formattedTotalVolume;
+}
 
-    let totalVolume = 0;
-    for (let i = 0; i < keywordValues.length; i++) {
-      if (volumeValues[i]) {
-        totalVolume += parseInt(volumeValues[i], 10);
-      }
-    }
-    volumeSum.textContent = totalVolume;
-  });  
-
-  volumesInput.addEventListener('input', function () {
-    let volumeCounter = this.value.split('\n').length;
-    if (volumeCounter === 1 && this.value === '') {
-      volumeCounter = 0;
-    }
-    volumesCounter.textContent = `${volumeCounter}`;
-
-    let keywordValues = keywordsInput.value.split('\n').filter(val => val !== '');
-    let volumeValues = this.value.split('\n').filter(val => val !== '');
-
-    let totalVolume = 0;
-    for (let i = 0; i < keywordValues.length; i++) {
-      if (volumeValues[i]) {
-        totalVolume += parseInt(volumeValues[i], 10);
-      }
-    }
-    volumeSum.textContent = totalVolume;
-  });  
+keywordsInput.addEventListener('input', updateCountsAndTotal);
+volumesInput.addEventListener('input', updateCountsAndTotal);
 
 /* Without volume sum counter
   keywordsInput.addEventListener('input', function () {
