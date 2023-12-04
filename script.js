@@ -55,52 +55,45 @@ volumesInput.addEventListener('input', updateCountsAndTotal);
 */
 
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("results");
-  switching = true;
-  dir = "asc";
-
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-
-      x = rows[i].getElementsByTagName("TD")[n].innerText;
-      y = rows[i + 1].getElementsByTagName("TD")[n].innerText;
-
-      if (dir == "asc") {
-        if (n === 0 && x.toLowerCase() > y.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        } else if (n === 1 && parseFloat(x) > parseFloat(y)) {
-          shouldSwitch = true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (n === 0 && x.toLowerCase() < y.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        } else if (n === 1 && parseFloat(x) < parseFloat(y)) {
-          shouldSwitch = true;
-          break;
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("results");
+    switching = true;
+    dir = "asc";
+    
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = parseFloat(rows[i].getElementsByTagName("TD")[n].innerText);
+        y = parseFloat(rows[i + 1].getElementsByTagName("TD")[n].innerText);
+        
+        if (dir == "asc") {
+          if (x > y) {
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x < y) {
+            shouldSwitch = true;
+            break;
+          }
         }
       }
-    }
-
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount++;
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+      
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
+        switchcount++;
+      } else {
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
       }
     }
   }
-}
 
 submitButton.addEventListener('click', () => {
   const keywords = keywordsInput.value.trim().split('\n');
