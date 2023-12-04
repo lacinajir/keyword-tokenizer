@@ -59,29 +59,36 @@ function sortTable(n) {
   table = document.getElementById("results");
   switching = true;
   dir = "asc";
-  
+
   while (switching) {
     switching = false;
     rows = table.rows;
-    
+
     for (i = 1; i < (rows.length - 1); i++) {
       shouldSwitch = false;
-      x = parseFloat(rows[i].getElementsByTagName("TD")[n].innerText);
-      y = parseFloat(rows[i + 1].getElementsByTagName("TD")[n].innerText);
-      
+
+      x = rows[i].getElementsByTagName("TD")[n].innerText;
+      y = rows[i + 1].getElementsByTagName("TD")[n].innerText;
+
       if (dir == "asc") {
-        if (x > y) {
+        if (n === 0 && x.toLowerCase() > y.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        } else if (n === 1 && parseFloat(x) > parseFloat(y)) {
           shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
-        if (x < y) {
+        if (n === 0 && x.toLowerCase() < y.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        } else if (n === 1 && parseFloat(x) < parseFloat(y)) {
           shouldSwitch = true;
           break;
         }
       }
     }
-    
+
     if (shouldSwitch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
