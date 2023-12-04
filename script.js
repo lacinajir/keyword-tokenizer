@@ -28,7 +28,6 @@ function updateCountsAndTotal() {
     }
   }
 
-  // Format the total volume with commas
   let formattedTotalVolume = totalVolume.toLocaleString();
   volumeSum.textContent = formattedTotalVolume;
 }
@@ -36,64 +35,42 @@ function updateCountsAndTotal() {
 keywordsInput.addEventListener('input', updateCountsAndTotal);
 volumesInput.addEventListener('input', updateCountsAndTotal);
 
-/* Without volume sum counter
-  keywordsInput.addEventListener('input', function () {
-    let keywordCounter = this.value.split('\n').length;
-    if (keywordCounter === 1 && this.value === '') {
-      keywordCounter = 0;
-    }
-    keywordsCounter.textContent = `${keywordCounter}`;
-  });  
-
-  volumesInput.addEventListener('input', function () {
-    let volumeCounter = this.value.split('\n').length;
-    if (volumeCounter === 1 && this.value === '') {
-      volumeCounter = 0;
-    }
-    volumesCounter.textContent = `${volumeCounter}`;
-  });  
-*/
-
 function sortTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("results");
-    switching = true;
-    dir = "asc";
-    
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-      
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = parseFloat(rows[i].getElementsByTagName("TD")[n].innerText);
-        y = parseFloat(rows[i + 1].getElementsByTagName("TD")[n].innerText);
-        
-        if (dir == "asc") {
-          if (x > y) {
-            shouldSwitch = true;
-            break;
-          }
-        } else if (dir == "desc") {
-          if (x < y) {
-            shouldSwitch = true;
-            break;
-          }
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("results");
+  switching = true;
+  dir = "asc";
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
         }
       }
-      
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
         switching = true;
-        switchcount++;
-      } else {
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
       }
     }
   }
+}
 
 submitButton.addEventListener('click', () => {
   const keywords = keywordsInput.value.trim().split('\n');
