@@ -11,29 +11,47 @@ const exportCsvButton = document.getElementById('export-csv');
 
 const stopwords = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'were', 'will', 'with'];
 
-function updateCountsAndTotal() {
-  let keywordValues = keywordsInput.value.split('\n').filter(val => val !== '');
-  let volumeValues = volumesInput.value.split('\n').filter(val => val !== '');
+keywordsInput.addEventListener('input', function () {
+          let keywordCounter = this.value.split('\n').length;
+          if (keywordCounter === 1 && this.value === '') {
+            keywordCounter = 0;
+          }
+          keywordsCounter.textContent = `${keywordCounter}`;
+      
+          let keywordValues = this.value.split('\n').filter(val => val !== '');
+          let volumeValues = volumesInput.value.split('\n').filter(val => val !== '');
+      
+          let totalVolume = 0;
+          for (let i = 0; i < keywordValues.length; i++) {
+            if (volumeValues[i]) {
+              totalVolume += parseInt(volumeValues[i], 10);
+            }
+          }
+          let formattedTotalVolume = totalVolume.toLocaleString();
+          volumeSum.textContent = formattedTotalVolume;
+        });  
+      
+        volumesInput.addEventListener('input', function () {
+          let volumeCounter = this.value.split('\n').length;
+          if (volumeCounter === 1 && this.value === '') {
+            volumeCounter = 0;
+          }
+          volumesCounter.textContent = `${volumeCounter}`;
+      
+          let keywordValues = keywordsInput.value.split('\n').filter(val => val !== '');
+          let volumeValues = this.value.split('\n').filter(val => val !== '');
+      
+          let totalVolume = 0;
+          for (let i = 0; i < keywordValues.length; i++) {
+            if (volumeValues[i]) {
+              totalVolume += parseInt(volumeValues[i], 10);
+            }
+          }
+          let formattedTotalVolume = totalVolume.toLocaleString();
+          volumeSum.textContent = formattedTotalVolume;
+        }); 
 
-  let keywordCounter = keywordValues.length;
-  keywordsCounter.textContent = `${keywordCounter}`;
 
-  let volumeCounter = volumeValues.length;
-  volumesCounter.textContent = `${volumeCounter}`;
-
-  let totalVolume = 0;
-  for (let i = 0; i < keywordValues.length; i++) {
-    if (volumeValues[i]) {
-      totalVolume += parseInt(volumeValues[i], 10);
-    }
-  }
-
-  let formattedTotalVolume = totalVolume.toLocaleString();
-  volumeSum.textContent = formattedTotalVolume;
-}
-
-keywordsInput.addEventListener('input', updateCountsAndTotal);
-volumesInput.addEventListener('input', updateCountsAndTotal);
 
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
