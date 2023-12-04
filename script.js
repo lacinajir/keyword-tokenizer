@@ -41,41 +41,47 @@ function sortTable(n) {
     table = document.getElementById("results");
     switching = true;
     dir = "asc";
-    
+
     while (switching) {
-      switching = false;
-      rows = table.rows;
-      
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = parseFloat(rows[i].getElementsByTagName("TD")[n].innerText);
-        y = parseFloat(rows[i + 1].getElementsByTagName("TD")[n].innerText);
-        
-        if (dir == "asc") {
-          if (x > y) {
-            shouldSwitch = true;
-            break;
-          }
-        } else if (dir == "desc") {
-          if (x < y) {
-            shouldSwitch = true;
-            break;
-          }
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < rows.length - 1; i++) {
+            shouldSwitch = false;
+
+            // Extract the text content of the two cells to be compared
+            x = rows[i].getElementsByTagName("TD")[n].innerText.toLowerCase();
+            y = rows[i + 1].getElementsByTagName("TD")[n].innerText.toLowerCase();
+
+            // Check if the column data type is numeric
+            var isNumeric = !isNaN(parseFloat(x)) && isFinite(x);
+
+            // Compare the values based on their types
+            if (dir === "asc") {
+                if ((isNumeric && parseFloat(x) > parseFloat(y)) || (!isNumeric && x > y)) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if ((isNumeric && parseFloat(x) < parseFloat(y)) || (!isNumeric && x < y)) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
         }
-      }
-      
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-        switchcount++;
-      } else {
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
+
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
         }
-      }
     }
-  }
+}
 
 submitButton.addEventListener('click', () => {
   const keywords = keywordsInput.value.trim().split('\n');
